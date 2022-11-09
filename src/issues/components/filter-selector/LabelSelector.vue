@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import LoaderSpinner from 'src/shared/components/LoaderSpinner.vue';
+import useLabels from '../../composables/useLabels';
+
+const { labelsQuery } = useLabels();
+
 
 </script>
 
