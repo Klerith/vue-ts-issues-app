@@ -26,6 +26,7 @@ const getIssues = async( labels: string[], state: State ):Promise<Issue[]> => {
 
 const useIssues = () => {
 
+
     const issuesStore = useIssuesStore();
     const { labels, state } = storeToRefs( issuesStore );
 
