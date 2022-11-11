@@ -45,16 +45,16 @@ const listPageClickTemp2 = () => {
   <!-- FloatingButtons -->
   <FloatingButtons :buttons="[
     {
-      icon: 'add',
-      color: 'primary',
-      size: 'lg',
-      action: listPageClickTemp1
-    },
-    {
       icon: 'navigation',
       color: 'secondary',
       size: 'sm',
       action: listPageClickTemp2
+    },
+    {
+      icon: 'add',
+      color: 'primary',
+      size: 'lg',
+      action: listPageClickTemp1,
     },
   ]" />
 
