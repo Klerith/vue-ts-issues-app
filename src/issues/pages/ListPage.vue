@@ -1,17 +1,23 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import LoaderSpinner from 'src/shared/components/LoaderSpinner.vue';
 import FilterSelector from 'src/issues/components/filter-selector/FilterSelector.vue';
-import IssueList from 'src/issues/components/issue-list/IssueList.vue';
-import useIssues from '../composables/useIssues';
 import FloatingButtons from '../components/FloatingButtons.vue';
 import NewIssueDialog from '../components/NewIssueDialog.vue';
+import IssueList from 'src/issues/components/issue-list/IssueList.vue';
+
+import useIssues from '../composables/useIssues';
+import useLabels from '../composables/useLabels';
 
 
 const { issuesQuery } = useIssues();
+const { labelsQuery } = useLabels();
+
+const isOpen = ref<boolean>(false);
 
 
-const listPageClickTemp1 = () => {
-  console.log('listPageClickTemp 1')
+const openDialog = () => {
+  isOpen.value = true;
 }
 
 
@@ -46,12 +52,13 @@ const listPageClickTemp1 = () => {
       icon: 'add',
       color: 'primary',
       size: 'lg',
-      action: listPageClickTemp1,
+      action: openDialog,
     },
   ]" />
 
   <!-- Dialogo de New Issue -->
-  <NewIssueDialog />
+  <NewIssueDialog :is-open="isOpen" v-if="labelsQuery.data"
+    :labels="labelsQuery.data.value?.map(label => label.name) || []" @on-close="isOpen = false" />
 
 
 
