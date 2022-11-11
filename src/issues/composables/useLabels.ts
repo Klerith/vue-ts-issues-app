@@ -8,7 +8,7 @@ import { Label } from '../interfaces/label';
 const getLabels = async():Promise<Label[]> => {
 
   const { data } = await githubApi<Label[]>('/labels?per_page=100', {
-    headers: { Authorization: null },
+    // headers: { Authorization: null },
   });
   return data;
 }

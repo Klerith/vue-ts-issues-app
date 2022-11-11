@@ -3,9 +3,19 @@ import LoaderSpinner from 'src/shared/components/LoaderSpinner.vue';
 import FilterSelector from 'src/issues/components/filter-selector/FilterSelector.vue';
 import IssueList from 'src/issues/components/issue-list/IssueList.vue';
 import useIssues from '../composables/useIssues';
+import FloatingButtons from '../components/FloatingButtons.vue';
 
 
 const { issuesQuery } = useIssues();
+
+
+const listPageClickTemp1 = () => {
+  console.log('listPageClickTemp 1')
+}
+
+const listPageClickTemp2 = () => {
+  console.log('listPageClickTemp 2')
+}
 
 
 </script>
@@ -31,6 +41,24 @@ const { issuesQuery } = useIssues();
     </div>
 
   </div>
+
+  <!-- FloatingButtons -->
+  <FloatingButtons :buttons="[
+    {
+      icon: 'add',
+      color: 'primary',
+      size: 'lg',
+      action: listPageClickTemp1
+    },
+    {
+      icon: 'navigation',
+      color: 'secondary',
+      size: 'sm',
+      action: listPageClickTemp2
+    },
+  ]" />
+
+
 
 </template>
 
